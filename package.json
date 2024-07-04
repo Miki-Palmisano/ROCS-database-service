@@ -1,0 +1,16 @@
+{
+  "name": "rocs-database-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "NODE_ENV=development nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miki-Palmisano/ROCS-database-service.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
