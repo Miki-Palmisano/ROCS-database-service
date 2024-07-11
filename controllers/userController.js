@@ -58,8 +58,10 @@ const auth0 = async (req, res) => {
             });
             const savedUser = await newUser.save();
             res.status(201).json({ id: savedUser._id, username: savedUser.username });
+            console.log('User created');
         } else {
             res.status(200).json({ id: existingUser._id, username: existingUser.username });
+            console.log('User already exists, login');
         }
     } catch (error) {
         res.status(500).json( error );
