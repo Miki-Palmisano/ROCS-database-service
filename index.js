@@ -19,6 +19,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+app.use('/state', (req, res) => {
+    console.log('Server is running')
+    res.status(200).json({ message: 'Server is running' });
+});
+
 app.use('/user', collectionUser);
 app.use('/list', collectionList);
 

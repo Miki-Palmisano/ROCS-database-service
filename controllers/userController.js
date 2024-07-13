@@ -61,7 +61,7 @@ const auth0 = async (req, res) => {
             console.log('User created');
         } else {
             res.status(200).json({ id: existingUser._id, username: existingUser.username });
-            console.log('User already exists, login');
+            console.log(email, 'User already exists, login');
         }
     } catch (error) {
         res.status(500).json( error );
