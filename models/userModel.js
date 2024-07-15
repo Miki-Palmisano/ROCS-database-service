@@ -19,20 +19,54 @@ const userSchema = new mongoose.Schema({
     },
     filmList: [
         {
-            id: String,
-            status: ['Visto', 'In Visione', 'Da Vedere']
+            filmId: {
+                type: String
+            },
+            img: {
+                type: String
+            },
+            status: {
+                type: String,
+                enum: ['Visto', 'Da Vedere', 'In Visione']
+            },
+            vote: {
+                type: Number,
+                min: 0,
+                max: 10
+            }
         }
     ],
     serieList: [
         {
-            id: String,
-            status: ['Visto', 'In Visione', 'Da Vedere']
+            serieId: {
+                type: String
+            },
+            img: {
+                type: String
+            },
+            status: {
+                type: String,
+                enum: ['Visto', 'Da Vedere', 'In Visione']
+            },
+            vote: {
+                type: Number,
+                min: 0,
+                max: 10
+            }
         }
     ],
-    favouriteList: [
+    favoriteList: [
         {
-            id: String,
-            type: ['Film', 'Serie']
+            favoriteId: {
+                type: String
+            },
+            img: {
+                type: String
+            },
+            type: {
+                type: String,
+                enum: ['film', 'serie']
+            }
         }
     ]
 });
