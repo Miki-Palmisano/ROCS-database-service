@@ -17,9 +17,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    kingElementURL: {
+        type: String
+    },
     filmList: [
         {
-            filmId: {
+            type: {
+                type: String
+            },
+            id: {
                 type: String
             },
             img: {
@@ -38,7 +44,10 @@ const userSchema = new mongoose.Schema({
     ],
     serieList: [
         {
-            serieId: {
+            type: {
+                type: String,
+            },
+            id: {
                 type: String
             },
             img: {
@@ -57,7 +66,7 @@ const userSchema = new mongoose.Schema({
     ],
     favoriteList: [
         {
-            favoriteId: {
+            id: {
                 type: String
             },
             img: {
@@ -65,7 +74,7 @@ const userSchema = new mongoose.Schema({
             },
             type: {
                 type: String,
-                enum: ['film', 'serie']
+                enum: ['films', 'series']
             }
         }
     ]
