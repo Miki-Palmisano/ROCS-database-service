@@ -11,12 +11,12 @@ const FavoriteContentID = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const filmIndex = findUser.favoriteList.some(item => item.favoriteId === itemId && item.type === type);
+        const filmIndex = findUser.favoriteList.some(item => item.id === itemId && item.type === type);
 
         if (filmIndex) {
             await user.User.findByIdAndUpdate(
                 userId,
-                { $pull: { favoriteList: { favoriteId: itemId } } }
+                { $pull: { favoriteList: { id: itemId } } }
             ); 
             console.log("Elemento rimosso dalla lista dei preferiti");
             res.status(200).json({ message: 'Elemento rimosso dalla lista dei preferiti'});
@@ -34,7 +34,7 @@ const FavoriteContentID = async (req, res) => {
     }
 }
 
-const GetFavoriteStatusContentID = async (req, res) => {
+const GetFavoriteStateContentID = async (req, res) => {
     const { userId, itemId, type } = req.query;
 
     try {
@@ -44,7 +44,7 @@ const GetFavoriteStatusContentID = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const favoriteItem = findUser.favoriteList.find(item => item.favoriteId === itemId && item.type === type);
+        const favoriteItem = findUser.favoriteList.find(item => item.id === itemId && item.type === type);
 
         if (favoriteItem) {
             console.log('Elemento preferito trovato');
@@ -124,7 +124,7 @@ const GetStatusContentID = async (req, res) => {
         }
 
         if(type === 'films') {
-            const filmItem = findUser.filmList.find(item => item.filmId === itemId);
+            const filmItem = findUser.filmList.find(item => item.id === itemId);
 
             if (filmItem) {
                 console.log('Film trovato');
@@ -134,7 +134,7 @@ const GetStatusContentID = async (req, res) => {
                 res.status(404).json({ message: 'Film not found' });
             }
         } else if (type === 'series') {
-            const serieItem = findUser.serieList.find(item => item.serieId === itemId);
+            const serieItem = findUser.serieList.find(item => item.id === itemId);
 
             if (serieItem) {
                 console.log('Serie trovata');
@@ -180,14 +180,14 @@ const RemoveContentID = async (req, res) => {
         if(type === 'films') {
             await user.User.findByIdAndUpdate(
                 userId,
-                { $pull: { filmList: { filmId: itemId } } }
+                { $pull: { filmList: { id: itemId } } }
             );
             console.log('Film rimosso con successo');
             res.status(200).json({ message: 'Film rimosso con successo' });
         } else if (type === 'series') {
             await user.User.findByIdAndUpdate(
                 userId,
-                { $pull: { serieList: { serieId: itemId } } }
+                { $pull: { serieList: { id: itemId } } }
             );
             console.log('Serie rimossa con successo');
             res.status(200).json({ message: 'Serie rimossa con successo' });
@@ -200,7 +200,7 @@ const RemoveContentID = async (req, res) => {
 
 module.exports = {
     FavoriteContentID,
-    GetFavoriteStatusContentID,
+    GetFavoriteStateContentID,
     AddContentID,
     GetStatusContentID,
     GetListContentID,
