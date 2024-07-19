@@ -17,9 +17,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    kingElementURL: {
-        type: String
-    },
     filmList: [
         {
             type: {
