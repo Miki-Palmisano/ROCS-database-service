@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
             },
             status: {
                 type: String,
-                enum: ['Visto', 'Da Vedere', 'In Visione']
+                enum: ['Visto', 'Da Vedere', 'Sto Vedendo']
             },
             vote: {
                 type: Number,
